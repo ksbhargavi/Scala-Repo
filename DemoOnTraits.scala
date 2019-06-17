@@ -1,13 +1,13 @@
 trait Vehicle {
-  var noOfWheels: String
+  val noOfWheels: String
   def getType(noOfWheels: String):String
   def show() = println(" Trait can have implemented methods and  can achieve multiple inheritance")
 
 }
 
 // due to Trait mixin concept  can allow to  extend any number of traits with a class or abstract class  and need to follow order
-class Car (wheels: String= "4")extends Vehicle with BrandTrait {
- var noOfWheels: String= "4";
+ class Car (wheels: String= "4")extends BrandTrait with Vehicle {
+ val noOfWheels: String= "4";
   def getType(noOfWheels: String): String = {
     " car  has "+ noOfWheels+ "wheels"
   }
@@ -21,15 +21,19 @@ class Car (wheels: String= "4")extends Vehicle with BrandTrait {
 
    def main(args: Array[String]): Unit = {
 
-    var result   =new Car().getType("4")
+    val result   =new Car().getType("4")
     new Car().show()
+     println(result)
 
      //new  BrandTrait()   "can not instantiate trait"
 
-    println( "Brand Name  "+new Car().brandName)
+    val name= new Car().brandName
+    println( "Brand Name  "+name)
+
+// String Interpolation
+     println(s"value of name = $name")
 
 
-     println(result)
    }
  }
 
